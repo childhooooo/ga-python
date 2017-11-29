@@ -1,10 +1,11 @@
+
 import json
 import random
 import decimal
 import functools
 
-from ga import World
-from gene import Human
+from world import World
+from human import Human
 
 MAX_GENES = 100
 MAX_GENERATION = 100

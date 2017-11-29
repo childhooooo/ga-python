@@ -1,15 +1,19 @@
+
 import json
 import random
 import decimal
 import functools
 import sys
+import os
 
-from ga import DisneyWorld
-from gene import Human
+sys.path.append(os.pardir + '/ga_base')
+from world_disney import DisneyWorld
+from human import Human
+
 
 sys.setrecursionlimit(7000)
 
-MAX_GENES = 8000
+MAX_GENES = 2000
 MAX_GENERATION = 500
 PROBABILITY_MUTATION = 0.1
 
@@ -37,9 +41,9 @@ def evolution(people, world, generation):
     avg = average(evaluations)
 
     # result
-    print('MAXIMAM EVALUATION: ', evaluations[0])
+    print('MAXIMUM EVALUATION: ', evaluations[0])
     print('MINIMAM EVALUATION: ', evaluations[-1])
-    print('AVERAGE: ', avg)
+    print('AVERAGE           : ', avg)
 
     if(generation >= MAX_GENERATION):
         people_evaluated.sort(key=lambda x: x.getEvaluation(), reverse=True)
@@ -99,7 +103,7 @@ if __name__ == '__main__':
         human.generate()
         people.append(human)
 
-    print(len(people), 'people enter the dream world today!')
+    print(len(people), 'people are exploring the dream world today!')
 
     result = evolution(people, disney_world, 1) # continue evolution up to MAX_GENERATION
 

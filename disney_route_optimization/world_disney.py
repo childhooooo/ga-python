@@ -1,24 +1,14 @@
-from gene import Human
-from gene import Guest
-from attraction import Attraction
 
 import functools
 import decimal
 import copy
+import sys,os
+sys.path.append(os.pardir + '/ga_base')
 
-class World(object):
-
-    def __init__(self):
-        return
-
-
-    def evaluate(self, human):
-        amount = functools.reduce(lambda x,y: x+y, human.getGeneSequence())
-        length = human.length
-        h = copy.deepcopy(human)
-        h.reset()
-        h.evaluated(amount / decimal.Decimal(length))
-        return h
+from human import Human
+from human_guest import Guest
+from world import World
+from attraction import Attraction
 
 
 class DisneyWorld(World):
